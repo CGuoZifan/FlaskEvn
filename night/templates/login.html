@@ -1,0 +1,11 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<h3 style="color: #9C1A1C">
+    <!--当在模板中调用get_flashed_messages()
+    函数后，保存于session中的flash消息自动清空。-->
+    {% for msg in get_flashed_messages() %}
+        <li>{{ msg }}</li>
+    {% endfor %}
+</h3>
+<!--使用宏显示表单-->
+{{ wtf.quick_form(form,action="/login/")}}
