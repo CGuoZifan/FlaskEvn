@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax局部刷新页面</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+        function getFruit() {
+            $.get(
+                url='/fruit/',
+                function (data) {
+                    var html="";
+                    for (var index in data.name){
+                        html+="<li>"+data.name[index]+"</li><br>";
+                    }
+                    $("#fruit").html(html);
+
+                },
+                dataType='json'
+            )
+        }
+        function getSport() {
+            $.get(
+                url="/sport/",
+                var html="";
+                for (var index in data.name){
+                    html+="<li>"+data.name[index]+"</li><br>";
+                }
+                $("#sport").html(html)
+            ),
+            dataType="json"
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="fruit" onclick="getFruit()">
+    <div id="fruit"></div>
+    <input type="button" value="sport" onclick="getSport()">
+    <div id="sport"></div>
+    <h3>图片</h3><br>
+    <img src="{{url_for("static",filename="")}}">
+    <h3>视频</h3>
+    <video src="{{url_for("static",filename="")}}"></video>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax异步加载数据</title>
+    <script type="text/javascript" src="{{ url_for='static',filename=js/jsquery}}"></script>
+    <script type="text/javascript">
+       function getData() {
+           $.ajax({
+               url:'/fruit',                       # 路径对应于函数的路径
+               success:function (data) {
+                   html="<h3>"
+                   html+=data.name;
+                   html+="价格";
+                   html+=data.price;
+                   html+="颜色";
+                   html+=data.color;
+                   html+="</h3>"
+                   $("#mydiv").html(html)
+               },
+               dataType:"json"
+           })
+       }
+    </script>
+</head>
+<body>
+    <input type="button" value="异步加载数据" onclick="getData()">
+    <div id="mydiv">
+
+    </div>
+</body>
+</html>
